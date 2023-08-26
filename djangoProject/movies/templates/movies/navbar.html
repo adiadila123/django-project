@@ -1,0 +1,32 @@
+<nav class="nav navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Streaming App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'movies:movie-list' %}">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link me-3" href="{% url 'movies:series-list' %}">Series</a>
+                </li>
+                <!-- ... dropdown navbar items ...
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="genreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Genres
+                    </a>
+                    {% include 'movies/genre_list_dropdown.html' %}
+                </li>
+                ... other navbar items ... -->
+            </ul>
+            <!-- Search Form Section -->
+            <form class="d-flex" action="{% url 'movies:search-results' %}" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,8 @@
+<!-- genre_list_dropdown.html -->
+
+    <ul class="dropdown-menu" aria-labelledby="genreDropdown">
+        {% for genre in genres %}
+            <li><a class="dropdown-item" href="{% url 'movies:genre-movies-series' genre.pk %}">{{ genre.name }}</a></li>
+        {% endfor %}
+    </ul>
+

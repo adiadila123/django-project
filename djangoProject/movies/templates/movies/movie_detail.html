@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-4 mt-4">
+            <div class="card mb-4">
+                <img src="{{ movie.thumbnail_url }}" class="card-img-top" alt="{{ movie.title }} Thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text badge bg-primary text-wrap">
+                        <strong>Release Date:</strong> {{ movie.release_date }}
+                    </p>
+                    <!-- Read more and Less -->
+                    <div class="movie-description">
+                        <p class="description-text">{{ movie.description|truncatechars:150 }}</p>
+                        <button class="btn btn-outline-primary read-more-button">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 mt-4">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" width="100%" height="450" src="{{ movie.video_url }}"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 class="card-title">Featured Movies</h5>
+                <hr>
+                {% include 'movies/multi_carousel.html' %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const readMoreButton = document.querySelector('.read-more-button');
+        const descriptionText = document.querySelector('.description-text');
+        const originalDescription = '{{ movie.description }}';
+        const truncatedDescription = '{{ movie.description|truncatechars:150 }}';
+
+        readMoreButton.addEventListener('click', () => {
+            if (readMoreButton.textContent === 'Read More') {
+                descriptionText.textContent = originalDescription;
+                readMoreButton.textContent = 'Read Less';
+                descriptionText.style.maxHeight = 'none'; /* Expand to full height */
+            } else {
+                descriptionText.textContent = truncatedDescription;
+                readMoreButton.textContent = 'Read More';
+                descriptionText.style.maxHeight = '150px'; /* Collapse to initial height */
+            }
+        });
+    </script>
+
+{% endblock %}

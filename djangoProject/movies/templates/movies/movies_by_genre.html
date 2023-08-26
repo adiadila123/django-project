@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ genre.name }} Movies and Series</h1>
+
+    <h2>Movies</h2>
+    <div class="row">
+        {% for movie in movies %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ movie.thumbnail_url }}" class="card-img-top" alt="{{ movie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.title }}</h5>
+                        <p class="card-text">{{ movie.release_date }}</p>
+                        <!-- Add more movie details here -->
+                        <a href="{{ movie.video_url }}" class="btn btn-primary">Watch Now</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>Series</h2>
+    <div class="row">
+        {% for serie in series %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ serie.thumbnail.url }}" class="card-img-top" alt="{{ serie.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ serie.title }}</h5>
+                        <p class="card-text">{{ serie.release_date }}</p>
+                        <!-- Add more series details here -->
+                        <a href="{{ serie.trailer_url }}" class="btn btn-primary">Watch Trailer</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

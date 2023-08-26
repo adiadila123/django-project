@@ -1,0 +1,184 @@
+/* Add hover effect and shadow to card */
+body {
+    background-color: lightgray;
+}
+
+.navbar {
+    opacity: 0.9;
+}
+
+.card {
+    background-color: darkgray;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-link {
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.card-img-top {
+    object-fit: cover; /* Maintain aspect ratio and cover container */
+}
+
+.card-img-top:hover {
+    opacity: 0.7;
+}
+
+.list-group-item {
+    background-color: darkgray;
+}
+
+.modal-content {
+    background-color: darkgray;
+}
+
+/* Add animation effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animated-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+/* Set max-height and center the carousel */
+.carousel-container {
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Customize the carousel image size */
+.carousel-inner img {
+    max-height: 400px;
+    object-fit: fill;
+}
+
+/* Styling for pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination .page-item {
+    background-color: darkgray; /* Dark gray background color */
+    margin: 0 2px;
+}
+
+.pagination .page-item a.page-link {
+    background-color: darkgray;
+    color: #3B71CA; /* Text color for pagination links */
+    border: none;
+}
+
+.pagination .page-item a.page-link:hover {
+    background-color: #3B71CA;
+    color: #9FA6B2;
+}
+
+.pagination .page-item.active {
+    background-color: ; /* Green background color for active page */
+}
+
+.pagination .page-item.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.form-control {
+    background-color: lightgray;
+}
+
+/* Style the entire accordion */
+.accordion {
+    background-color: lightgray; /* Dark gray background */
+     /* Text color for the accordion content */
+}
+
+.accordion-button {
+    background-color: darkgray;
+    color: #000000;
+}
+
+/* Style the accordion headers */
+.accordion-header {
+    background-color: darkgray; /* Slightly lighter gray background for headers */
+    color: #3498db; /* Text color for headers */
+}
+
+/* Style the collapsed accordion content */
+.accordion-collapse {
+    background-color: darkgray; /* Slightly lighter gray background for collapsed content */
+    color: #3498db; /* Text color for collapsed content */
+}
+
+/* Style the expanded accordion content */
+.accordion-collapse.show {
+    background-color: darkgray; /* Dark gray background for expanded content */
+    color: #3498db; /* Text color for expanded content */
+}
+
+/* loadin.css */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  border: 6px solid rgba(255, 255, 255, 0.3); /* Light semi-transparent border */
+  border-top: 6px solid #3498db; /* White top border */
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide full description by default */
+.full-description {
+    display: none;
+}
+
+/* Style the "Read More" and "Read Less" buttons */
+.description-text {
+    max-height: 150px; /* Initial height */
+    overflow: hidden;
+    transition: max-height 0.3s ease; /* Transition effect */
+
+.hidden {
+    display: none;
+}
+
+
+
+

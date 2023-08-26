@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Carousel -->
+    <div class="container">
+        <div id="featuredCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for movie in movie_list %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <a href="{% url 'movies:movie-detail' slug=movie.slug %}">
+                        <img src="{{ movie.thumbnail_url }}" class="d-block w-100" alt="{{ movie.title }}">
+                    </a>
+                        <!-- <div class="carousel-caption">
+                            <h3>{{ movie.title }}</h3>
+                            <p>{{ movie.description }}</p>
+                        </div>-->
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for movie in movie_list %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <a href="{% url 'movies:movie-detail' slug=movie.slug %}">
+                            <img src="{{ movie.thumbnail_url }}" class="card-img-top" height="150" alt="{{ movie.title }} Thumbnail">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ movie.title|truncatechars:20 }}</h5>
+                            <p class="card-text badge bg-primary text-wrap">
+                                <strong>Release Date:</strong> {{ movie.release_date }}
+                            </p>
+                            <a type="button" href="{% url 'movies:movie-detail' slug=movie.slug %}" class="btn btn-outline-primary btn-sm me-3">Watch Movie</a>
+                            <a type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#thrillerModal{{ movie.id }}">Watch Thriller</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thriller Modal -->
+                <div class="modal modal-lg fade bg-dark" id="thrillerModal{{ movie.id }}" tabindex="-1" aria-labelledby="thrillerModalLabel{{ movie.id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="thrillerModalLabel{{ movie.id }}">Thriller for {{ movie.title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" width="100%" height="450" src="{{ movie.trailer_url }}"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include 'movies/paginator.html' %}
+{% endblock %}

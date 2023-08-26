@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    <p>Showing results for: <strong>{{ query }}</strong></p>
+    <hr class="bg-dark">
+
+    <div class="row">
+        {% for movie in movies %}
+            <div class="col-md-4 mb-2">
+                <div class="card">
+                    <a href="{% url 'movies:movie-detail' movie.pk %}">
+                        <img src="{{ movie.thumbnail_url }}" width="250" height="150" class="card-img-top" alt="{{ movie.title }}">
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="list-group-item">No movies results found.</p>
+        {% endfor %}
+
+        {% for serie in series %}
+            <div class="col-md-4 mb-2">
+                <div class="card">
+                    <a href="{% url 'movies:series-detail' serie.slug %}">
+                        <img src="{{ serie.thumbnail_url }}" width="250"  height="150" class="card-img-top" alt="{{ serie.title }}">
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="list-group-item">No series results found.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
