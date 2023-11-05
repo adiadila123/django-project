@@ -42,17 +42,17 @@
                                 <strong>Release Date:</strong> {{ movie.release_date }}
                             </p>
                             <a type="button" href="{% url 'movies:movie-detail' slug=movie.slug %}" class="btn btn-outline-primary btn-sm me-3">Watch Movie</a>
-                            <a type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#thrillerModal{{ movie.id }}">Watch Thriller</a>
+                            <a type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#thrillerModal{{ movie.id }}">Watch Trailer</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Thriller Modal -->
+                <!-- Trailer Modal -->
                 <div class="modal modal-lg fade bg-dark" id="thrillerModal{{ movie.id }}" tabindex="-1" aria-labelledby="thrillerModalLabel{{ movie.id }}" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="thrillerModalLabel{{ movie.id }}">Thriller for {{ movie.title }}</h5>
+                                <h5 class="modal-title" id="thrillerModalLabel{{ movie.id }}">Trailer for {{ movie.title }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
